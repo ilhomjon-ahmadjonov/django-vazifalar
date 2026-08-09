@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 from django.views import View
 from .models import Product
-from .utils import get_categories, get_category_child, get_category_not_child, get_product_ordering
+from .utils import get_categories, get_category_child, get_category_not_child, get_product_ordering, get_products
 from django.db.models import Q
 
 # Create your views here.
@@ -11,7 +11,8 @@ class IndexView(View):
             'categories' : get_categories(),
             'get_category_child':get_category_child(),
             'get_category_not_child': get_category_not_child(),
-            'get_product_ordering':get_product_ordering()
+            'get_product_ordering':get_product_ordering(),
+            'products': get_products()
         }
         return render(request, 'index.html', context)
 
