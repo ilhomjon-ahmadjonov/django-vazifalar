@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="uz">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Mebel Qo'shish</title>
+  </head>
+  <body>
+    <h1>➕ Yangi Mebel Qo'shish</h1>
+    <form method="POST">
+      {% csrf_token %} {% if form.errors %}
+      <div style="color: red">Xatolik bor!</div>
+      {% endif %}
+      <table>
+        {{ form.as_table }}
+      </table>
+      <br /><button type="submit">Saqlash</button>
+    </form>
+  </body>
+</html>

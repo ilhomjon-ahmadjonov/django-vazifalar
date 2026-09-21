@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="uz">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Yangi Gul</title>
+  </head>
+  <body>
+    <h1>➕ Gul Qo'shish</h1>
+    <form method="POST">
+      {% csrf_token %}
+      <p>Nomi: <input type="text" name="name" required /></p>
+      <p>Rangi: <input type="text" name="color" required /></p>
+      <p>Narxi: <input type="number" step="0.01" name="price" required /></p>
+      <p>Xona guli: <input type="checkbox" name="is_indoor" /></p>
+      <button type="submit">Saqlash</button>
+    </form>
+  </body>
+</html>

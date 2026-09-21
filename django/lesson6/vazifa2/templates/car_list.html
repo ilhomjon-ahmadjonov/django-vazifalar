@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Avtosalon</title>
+</head>
+<body>
+    <h1>Mavjud avtomobillar ro'yxati</h1>
+    <a href="{% url 'car_create' %}">➕ Yangi avtomobil qo'shish</a>
+    <hr>
+    
+    {% if cars %}
+        <ul>
+        {% for car in cars %}
+            <li>
+                <strong>Model:</strong> <a href="{% url 'car_detail' car.id %}">{{ car.brand_name }}</a> 
+                | <strong>Narxi:</strong> {{ car.price }} $
+            </li>
+        {% endfor %}
+        </ul>
+    {% else %}
+        <p>Avtosalonda hozircha mashina mavjud emas.</p>
+    {% endif %}
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="uz">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Yangi Soat Qo'shish</title>
+  </head>
+  <body>
+    <h1>➕ Yangi Soat Qo'shish</h1>
+    <a href="{% url 'watch_list' %}">⬅️ Ro'yxatga qaytish</a>
+    <hr />
+
+    <form method="POST">
+      {% csrf_token %} {% if form.errors %}
+      <div style="color: red; font-weight: bold; margin-bottom: 15px">
+        Kiritilgan ma'lumotlarda xatolik bor, iltimos tekshiring!
+      </div>
+      {% endif %}
+
+      <table>
+        {{ form.as_table }}
+      </table>
+
+      <br />
+      <button type="submit">✨ Soatni Saqlash</button>
+    </form>
+  </body>
+</html>

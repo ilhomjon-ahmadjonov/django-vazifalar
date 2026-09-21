@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Kompyuterlar do'koni</title>
+  </head>
+  <body>
+    <h1>Kompyuterlar ro'yxati</h1>
+    <a href="{% url 'computer_create' %}">➕ Yangi kompyuter qo'shish</a>
+    <hr />
+
+    {% if computers %}
+    <ul>
+      {% for comp in computers %}
+      <li>
+        <strong>Nomi:</strong>
+        <a href="{% url 'computer_detail' comp.id %}">{{ comp.name }}</a> |
+        <strong>Narxi:</strong> {{ comp.price }} so'm
+      </li>
+      {% endfor %}
+    </ul>
+    {% else %}
+    <p>Bazada kompyuterlar mavjud emas.</p>
+    {% endif %}
+  </body>
+</html>

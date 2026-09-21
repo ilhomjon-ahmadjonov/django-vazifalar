@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Yangi avtomobil</title>
+  </head>
+  <body>
+    <a href="{% url 'car_list' %}">⬅️ Orqaga</a>
+    <h1>Yangi avtomobil qo'shish</h1>
+    <hr />
+
+    <form method="POST">
+      {% csrf_token %}
+      <p>Brend va Model: <input type="text" name="brand_name" required /></p>
+      <p>Rangi: <input type="text" name="color" required /></p>
+      <p>Yili: <input type="number" name="year" required /></p>
+      <p>
+        Yurgan masofasi (km): <input type="number" name="mileage" required />
+      </p>
+      <p>
+        Narxi ($): <input type="number" name="price" step="0.01" required />
+      </p>
+      <p>
+        Yoqilg'i turi:
+        <select name="fuel_type">
+          <option value="Benzin">Benzin</option>
+          <option value="Gaz">Gaz</option>
+          <option value="Elektr">Elektr</option>
+        </select>
+      </p>
+      <button type="submit">Saqlash</button>
+    </form>
+  </body>
+</html>

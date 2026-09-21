@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="uz">
+  <head>
+    <meta charset="UTF-8" />
+    <title>{{ item.name }}</title>
+  </head>
+  <body>
+    <a href="{% url 'furniture_list' %}">⬅️ Orqaga</a> |
+    <a href="{% url 'furniture_update' item.id %}">📝 Update</a> |
+    <a href="{% url 'furniture_delete' item.id %}" style="color: red"
+      >❌ Delete</a
+    >
+
+    <hr />
+    <h1>{{ item.name }}</h1>
+    <p><b>Tavsif:</b> {{ item.desc }}</p>
+    <p><b>Material:</b> {{ item.material }}</p>
+    <p><b>Rangi:</b> {{ item.color }}</p>
+    <p><b>Omborda:</b> {{ item.stock }} ta</p>
+    <p><b>Narxi:</b> {{ item.price }} UZS</p>
+    <p>
+      <b>Sotuvda:</b> {% if item.is_avialable %} Bor {% else %} Yo'q {% endif %}
+    </p>
+  </body>
+</html>

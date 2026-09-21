@@ -1,0 +1,15 @@
+<!doctype html>
+<html lang="uz">
+  <head>
+    <meta charset="UTF-8" />
+    <title>O'chirish</title>
+  </head>
+  <body>
+    <form method="POST">
+      {% csrf_token %}
+      <h2>"{{ item.name }}" o'chirilsinmi?</h2>
+      <button type="submit" style="background: red; color: white">Ha</button>
+      <a href="{% url 'furniture_detail' item.id %}">Yo'q</a>
+    </form>
+  </body>
+</html>

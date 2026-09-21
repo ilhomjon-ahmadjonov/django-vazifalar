@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>O'chirishni tasdiqlash</title>
+  </head>
+  <body>
+    <h1>Ogohlantirish!</h1>
+    <form method="POST">
+      {% csrf_token %}
+      <h2>
+        Siz haqiqatdan ham "{{ computer.name }}" kompyuterini o'chirmoqchimisiz?
+      </h2>
+      <button type="submit"python>Ha, o'chirilsin</button>
+      <a href="{% url 'computer_detail' computer.id %}">Yo'q, bekor qilish</a>
+    </form>
+  </body>
+</html>

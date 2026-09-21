@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="uz">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Gullar</title>
+  </head>
+  <body>
+    <h1>🌸 Gullar Do'koni</h1>
+    <a href="{% url 'flower_create' %}">➕ Yangi gul qo'shish</a>
+    <hr />
+    <ul>
+      {% for flower in flowers %}
+      <li>
+        <a href="{% url 'flower_detail' flower.id %}">{{ flower.name }}</a> — {{
+        flower.price }} UZS
+      </li>
+      {% empty %}
+      <p>Hozircha gullar yo'q.</p>
+      {% endfor %}
+    </ul>
+  </body>
+</html>

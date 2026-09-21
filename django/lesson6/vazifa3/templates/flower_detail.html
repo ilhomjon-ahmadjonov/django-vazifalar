@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="uz">
+  <head>
+    <meta charset="UTF-8" />
+    <title>{{ flower.name }}</title>
+  </head>
+  <body>
+    <a href="{% url 'flower_list' %}">⬅️ Orqaga</a>
+    <hr />
+    <h1>{{ flower.name }}</h1>
+    <p><b>Rangi:</b> {{ flower.color }}</p>
+    <p><b>Narxi:</b> {{ flower.price }} UZS</p>
+    <br /><a href="{% url 'flower_delete' flower.id %}" style="color: red"
+      >🗑️ O'chirish</a
+    >
+  </body>
+</html>

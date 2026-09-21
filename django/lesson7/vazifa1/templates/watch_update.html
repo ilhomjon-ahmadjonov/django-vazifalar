@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="uz">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Soatni Tahrirlash</title>
+  </head>
+  <body>
+    <h1>📝 Soat Ma'lumotlarini Tahrirlash</h1>
+    <a href="{% url 'watch_detail' form.instance.id %}"
+      >⬅️ Bekor qilish va orqaga qaytish</a
+    >
+    <hr />
+
+    <form method="POST">
+      {% csrf_token %} {% if form.errors %}
+      <div style="color: red; font-weight: bold; margin-bottom: 15px">
+        Ma'lumotlar validatsiyadan o'tmadi!
+      </div>
+      {% endif %}
+
+      <table>
+        {{ form.as_table }}
+      </table>
+
+      <br />
+      <button type="submit">💾 O'zgarishlarni Saqlash</button>
+    </form>
+  </body>
+</html>

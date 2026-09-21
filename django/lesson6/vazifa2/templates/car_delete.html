@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>O'chirishni tasdiqlash</title>
+  </head>
+  <body>
+    <h1>Ogohlantirish!</h1>
+    <form method="POST">
+      {% csrf_token %}
+      <h2>
+        Siz haqiqatdan ham "{{ car.brand_name }}" avtomobilini bazadan
+        o'chirmoqchimisiz?
+      </h2>
+      <button type="submit" style="background-color: red; color: white">
+        Ha, o'chirilsin
+      </button>
+      <a href="{% url 'car_detail' car.id %}">Yo'q, bekor qilish</a>
+    </form>
+  </body>
+</html>

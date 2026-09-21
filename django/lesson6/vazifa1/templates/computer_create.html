@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Yangi kompyuter</title>
+  </head>
+  <body>
+    <a href="{% url 'computer_list' %}">⬅️ Bekor qilish</a>
+    <h1>Yangi kompyuter qo'shish</h1>
+    <hr />
+
+    <form method="POST">
+      {% csrf_token %}
+      <p>Nomi: <input type="text" name="name" required /></p>
+      <p>CPU: <input type="text" name="cpu" required /></p>
+      <p>RAM (GB): <input type="number" name="ram" required /></p>
+      <p>Xotira: <input type="text" name="storage" required /></p>
+      <p>Narxi: <input type="number" name="price" step="0.01" required /></p>
+      <p>Tavsif: <textarea name="description" required></textarea></p>
+      <button type="submit">Saqlash</button>
+    </form>
+  </body>
+</html>

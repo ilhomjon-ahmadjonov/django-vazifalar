@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>{{ car.brand_name }}</title>
+  </head>
+  <body>
+    <a href="{% url 'car_list' %}">⬅️ Ro'yxatga qaytish</a>
+    <hr />
+
+    <h1>{{ car.brand_name }} — Batafsil ma'lumot</h1>
+    <p><strong>Rangi:</strong> {{ car.color }}</p>
+    <p><strong>Yili:</strong> {{ car.year }}-yil</p>
+    <p><strong>Yurgan masofasi:</strong> {{ car.mileage }} km</p>
+    <p><strong>Yoqilg'i turi:</strong> {{ car.fuel_type }}</p>
+    <p><strong>Narxi:</strong> {{ car.price }} $</p>
+
+    <br /><br />
+    <a
+      href="{% url 'car_delete' car.id %}"
+      style="
+        background-color: red;
+        color: white;
+        padding: 10px;
+        text-decoration: none;
+        border-radius: 5px;
+      "
+    >
+      🗑️ Avtomobilni o'chirish
+    </a>
+  </body>
+</html>

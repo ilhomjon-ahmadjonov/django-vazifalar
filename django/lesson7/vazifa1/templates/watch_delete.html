@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="uz">
+  <head>
+    <meta charset="UTF-8" />
+    <title>O'chirishni Tasdiqlash</title>
+  </head>
+  <body>
+    <h1 style="color: red">⚠️ Diqqat!</h1>
+    <hr />
+
+    <form method="POST">
+      {% csrf_token %}
+      <h2>
+        Siz haqiqatdan ham "{{ watch.title }}" soatini tizimdan butunlay
+        o'chirmoqchimisiz?
+      </h2>
+
+      <button
+        type="submit"
+        style="
+          background-color: red;
+          color: white;
+          padding: 10px 20px;
+          border: none;
+          cursor: pointer;
+        "
+      >
+        Ha, o'chirilsin
+      </button>
+      <a href="{% url 'watch_detail' watch.id %}" style="margin-left: 15px"
+        >Yo'q, bekor qilish</a
+      >
+    </form>
+  </body>
+</html>

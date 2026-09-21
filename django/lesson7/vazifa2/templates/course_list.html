@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="uz">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Kurslar</title>
+  </head>
+  <body>
+    <h1>📚 O'quv Kurslari</h1>
+    <a href="{% url 'course_create' %}">➕ Yangi kurs qo'shish</a>
+    <hr />
+    <ul>
+      {% for course in courses %}
+      <li>
+        <a href="{% url 'course_detail' course.id %}"
+          ><b>{{ course.name }}</b></a
+        >
+        — {{ course.price }} UZS
+      </li>
+      {% empty %}
+      <p>Kurslar yo'q.</p>
+      {% endfor %}
+    </ul>
+  </body>
+</html>

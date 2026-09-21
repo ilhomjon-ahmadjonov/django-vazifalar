@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <title>Kirish</title>
+</head>
+<body>
+    <h2>Tizimga Kirish</h2>
+
+    <form method="post" action="{% url 'auth:login' %}">
+        {% csrf_token %}
+        
+        <div>
+            <label for="username">Foydalanuvchi nomi:</label><br>
+            <input type="text" id="username" name="username" required>
+        </div>
+        <br>
+        <div>
+            <label for="password">Parol:</label><br>
+            <input type="password" id="password" name="password" required>
+        </div>
+        <br>
+        <button type="submit">Kirish</button>
+    </form>
+
+    <p>Akkauntingiz yo'qmi? <a href="{% url 'auth:register' %}">Ro'yxatdan o'ting</a></p>
+</body>
+</html>

@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="uz">
+  <head>
+    <meta charset="UTF-8" />
+    <title>{{ course.name }}</title>
+  </head>
+  <body>
+    <a href="{% url 'course_list' %}">⬅️ Orqaga</a> |
+    <a href="{% url 'course_update' course.id %}">📝 Update</a> |
+    <a href="{% url 'course_delete' course.id %}" style="color: red"
+      >❌ Delete</a
+    >
+    <hr />
+    <h1>{{ course.name }}</h1>
+    <p><b>Mentor:</b> {{ course.mentor }}</p>
+    <p><b>Davomiyligi:</b> {{ course.duration_months }} oy</p>
+    <p><b>Narxi:</b> {{ course.price }} UZS</p>
+  </body>
+</html>

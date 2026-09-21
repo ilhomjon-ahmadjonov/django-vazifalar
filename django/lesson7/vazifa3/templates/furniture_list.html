@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="uz">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Mebellar</title>
+  </head>
+  <body>
+    <h1>🛋️ Mebellar Ro'yxati</h1>
+    <a href="{% url 'furniture_create' %}">➕ Yangi mebel qo'shish</a>
+    <hr />
+    <ul>
+      {% for item in items %}
+      <li>
+        <a href="{% url 'furniture_detail' item.id %}"
+          ><b>{{ item.name }}</b></a
+        >
+        - {{ item.price }} UZS
+      </li>
+      {% empty %}
+      <p>Mebellar yo'q.</p>
+      {% endfor %}
+    </ul>
+  </body>
+</html>

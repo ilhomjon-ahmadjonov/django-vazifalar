@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <title>Foydalanuvchilar Ro'yxati</title>
+</head>
+<body>
+    <h2>Foydalanuvchilar Ro'yxati</h2>
+    <a href="{% url 'register' %}">Yangi foydalanuvchi qo'shish</a>
+    <hr>
+    
+    <table border="1" cellpadding="8">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Username</th>
+                <th>Email</th>
+                <th>Amallar</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for user in object_list %}
+            <tr>
+                <td>{{ user.id }}</td>
+                <td>{{ user.username }}</td>
+                <td>{{ user.email }}</td>
+                <td>
+                    <a href="{% url 'profile' user.pk %}">Ko'rish</a> |
+                    <a href="{% url 'update' user.pk %}">Tahrirlash</a>
+                </td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="4">Hozircha foydalanuvchilar yo'q.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>{{ computer.name }}</title>
+  </head>
+  <body>
+    <a href="{% url 'computer_list' %}">⬅️ Ro'yxatga qaytish</a>
+    <hr />
+
+    <div>
+      <h1>{{ computer.name }} haqida ma'lumot</h1>
+      <p><strong>Protsessor:</strong> {{ computer.cpu }}</p>
+      <p><strong>Tezkor xotira (RAM):</strong> {{ computer.ram }} GB</p>
+      <p><strong>Doimiy xotira:</strong> {{ computer.storage }}</p>
+      <p><strong>Narxi:</strong> {{ computer.price }} so'm</p>
+      <p><strong>Tavsif:</strong> {{ computer.description }}</p>
+
+      <br /><br />
+      <a href="{% url 'computer_delete' computer.id %}">
+        🗑️ Kompyuterni o'chirish
+      </a>
+    </div>
+  </body>
+</html>
