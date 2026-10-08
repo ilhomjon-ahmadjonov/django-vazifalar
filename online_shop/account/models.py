@@ -36,6 +36,13 @@ class CustomUser(BaseModel, AbstractUser):
     
     def generate_code(self,verify_type):
         code = random.randint(1000,9999)
+        Verify.objects.create(
+            code=code,
+            verify_type=verify_type,
+            user=self
+        )
+        return code
+
 
         Verify.objects.create(
             code=code,

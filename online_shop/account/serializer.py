@@ -7,14 +7,14 @@ class SignUpSerializer(serializers.ModelSerializer):
     phone_number_email = serializers.CharField(required=True, write_only=True)
     class Meta:
         model = CustomUser
-        fields = ['id','auth_status','auth_type']
+        fields = ['id','auth_status','auth_type','phone_number_email']
         read_only_fields = fields
 
     def validate(self, attrs):
         phone_number_email = attrs.get('phone_number_email')
         phone_number_or_email = email_or_phone_regex(phone_number_email)
 
-        if phone_number_email == 'email':
+        if phone_number_or_email == 'email':
             data = {
                 'email': phone_number_email,
                 'auth_type' : VIA_EMAIL
@@ -22,7 +22,7 @@ class SignUpSerializer(serializers.ModelSerializer):
 
         elif phone_number_or_email == 'phone':
             data = {
-                'phon_number':phone_number_email,
+                'phone_number':phone_number_email,
                 'auth_type': VIA_PHONE
             }
         else:
@@ -31,25 +31,29 @@ class SignUpSerializer(serializers.ModelSerializer):
         return data
 
     def create(self, validated_data):
-        user = CustomUser.objects.create_user(**validated_data)
-        if validated_data['auth_type'] == 'email':
-            code = self.generated_code(validated_data['auth_type'])
-
+        user = CustomUser(**validated_data)
+        user.save()
+        
+        if validated_data['auth_type'] == VIA_EMAIL:
+            code = user.generate_code(validated_data['auth_type'])
+            print(f'CODE EMAIL: {code} =========================')
             # send_code(validated_data['email'], code)
 
-        elif validated_data['auth_type'] == 'phone':
-            code = self.generated_code(validated_data['auth_type'])
-                    
+        elif validated_data['auth_type'] == VIA_PHONE:
+            code = user.generate_code(validated_data['auth_type'])
+            print(f'CODE PHONE: {code} =========================')        
             # send_code(validated_data['email'], code)
+
+        else:
+            raise ValidationError('Email yoki telefon raqam xato')
 
         return user
 
     def to_representation(self, instance):
-        data = super().to_representation(self, instance)
+        data = super().to_representation(instance)
         token = instance.token()
 
         return{
             'data': data,
             'token': token
         }
-        
