@@ -1,7 +1,7 @@
 from rest_framework import serializers
 from .models import CustomUser, Verify,VIA_EMAIL,VIA_PHONE
 from rest_framework.exceptions import ValidationError
-from base.utils import email_or_phone_regex
+from base.utils import email_or_phone_regex, send_code
 class SignUpSerializer(serializers.ModelSerializer):
 
     phone_number_email = serializers.CharField(required=True, write_only=True)
@@ -37,7 +37,7 @@ class SignUpSerializer(serializers.ModelSerializer):
         if validated_data['auth_type'] == VIA_EMAIL:
             code = user.generate_code(validated_data['auth_type'])
             print(f'CODE EMAIL: {code} =========================')
-            # send_code(validated_data['email'], code)
+            send_code(validated_data['email'], code)
 
         elif validated_data['auth_type'] == VIA_PHONE:
             code = user.generate_code(validated_data['auth_type'])

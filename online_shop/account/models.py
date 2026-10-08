@@ -43,14 +43,6 @@ class CustomUser(BaseModel, AbstractUser):
         )
         return code
 
-
-        Verify.objects.create(
-            code=code,
-            verify_type=verify_type,
-            user=self
-        )
-        return code
-
     def check_username(self):
         if not self.username:
             ud = str(uuid.uuid4())
